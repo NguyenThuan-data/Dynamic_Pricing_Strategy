@@ -12,20 +12,23 @@ This project implements a sophisticated dynamic pricing algorithm for ride-shari
 ## Data Analysis Visualizations
 
 ### 1. Ride Duration vs Cost Analysis
-### Interactive Plot
-<iframe src="plots/Expected_Ride_Duration_vs_Historical_Cost_of_Ride.html" width="100%" height="500"></iframe>
+![Scatter Plot](plots/scatter_plot.png)
 *This scatter plot shows the relationship between expected ride duration and historical cost, with a trend line indicating the correlation.*
+
+**Interactive Version**: [View Interactive Plot](plots/Expected_Ride_Duration_vs_Historical_Cost_of_Ride.html)
 *Insights:* We can see that the relationship between the expected duration with the cost the positvely increasing with very few dots far from the trend line. This suggest the duration is a good prediction factor of cost.
 
 ### 2. Vehicle Type Cost Distribution
-### Interactive Plot
-<iframe src="plots/Distribution_of_Historical_Cost_of_Rides_by_Vehicle_Type.html" width="100%" height="500"></iframe>
+![Box Plot](plots/box_plot.png)
 *Box plot comparing cost distributions between Economy and Premium vehicle types.*
 
+**Interactive Version**: [View Interactive Plot](plots/Distribution_of_Historical_Cost_of_Rides_by_Vehicle_Type.html)
+
 ### 3. Feature Correlation Matrix
-### Interactive Plot
-<iframe src="plots/Correlation_Matrix_of_Features.html" width="100%" height="500"></iframe>
+![Correlation Matrix](plots/correlation_heatmap.png)
 *This heatmap visualizes the correlations between all numeric features in the dataset, helping to identify which features most strongly influence the historical cost of rides.*
+
+**Interactive Version**: [View Interactive Plot](plots/Correlation_Matrix_of_Features.html)
 *Insight:* Use this matrix to select the features that have the highest correlation with historical cost, which is expected ride duration, for further analysis and model building
 
 ### Conclusion:
