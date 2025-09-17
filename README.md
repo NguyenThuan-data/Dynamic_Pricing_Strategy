@@ -3,7 +3,7 @@
 ## 🌐 Interactive Visualizations
 
 ### Option 1: GitHub Pages (Recommended)
-**[View Interactive Plots →](https://yourusername.github.io/your-repo-name/)**
+**[View Interactive Plots →](https://NguyenThuan-data.github.io/Dynamic_Pricing_Strategy/)**
 
 ### Option 2: Jupyter Notebook Viewer
 **[View Interactive Notebook →](https://nbviewer.org/github/yourusername/your-repo-name/blob/main/dynamic_pricing.ipynb)**
