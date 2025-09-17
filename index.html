@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Pricing Analysis - Interactive Plots</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .plot-section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .plot-section:last-child {
+            border-bottom: none;
+        }
+        .plot-title {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .plot-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .plot-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+        }
+        .insights {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        .insights h4 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        .insights ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 Dynamic Pricing Analysis</h1>
+            <p>Interactive Visualizations for Ride-Sharing Data Science Project</p>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">1. Ride Duration vs Cost Analysis</h2>
+            <p class="plot-description">
+                This scatter plot reveals the relationship between expected ride duration and historical cost, 
+                with a trend line showing the correlation strength.
+            </p>
+            <div class="plot-container">
+                <iframe src="plots/Expected_Ride_Duration_vs_Historical_Cost_of_Ride.html"></iframe>
+            </div>
+            <div class="insights">
+                <h4>🔍 Key Insights:</h4>
+                <ul>
+                    <li><strong>Strong Positive Correlation:</strong> Longer rides consistently cost more</li>
+                    <li><strong>Linear Relationship:</strong> Easy to predict costs based on duration</li>
+                    <li><strong>Few Outliers:</strong> Most data points follow the trend closely</li>
+                    <li><strong>Business Value:</strong> Duration is a reliable pricing factor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">2. Vehicle Type Cost Distribution</h2>
+            <p class="plot-description">
+                Box plot comparing cost distributions between Economy and Premium vehicle types, 
+                showing pricing differences and variability.
+            </p>
+            <div class="plot-container">
+                <iframe src="plots/Distribution_of_Historical_Cost_of_Rides_by_Vehicle_Type.html"></iframe>
+            </div>
+            <div class="insights">
+                <h4>🔍 Key Insights:</h4>
+                <ul>
+                    <li><strong>Premium vs Economy:</strong> Clear cost differentiation between vehicle types</li>
+                    <li><strong>Price Range:</strong> Premium vehicles have higher median costs</li>
+                    <li><strong>Variability:</strong> Both types show similar cost distribution patterns</li>
+                    <li><strong>Pricing Strategy:</strong> Vehicle type is a key pricing factor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="plot-section">
+            <h2 class="plot-title">3. Feature Correlation Matrix</h2>
+            <p class="plot-description">
+                Heatmap showing correlations between all numeric features, helping identify 
+                which factors most strongly influence ride costs.
+            </p>
+            <div class="plot-container">
+                <iframe src="plots/Correlation_Matrix_of_Features.html"></iframe>
+            </div>
+            <div class="insights">
+                <h4>🔍 Key Insights:</h4>
+                <ul>
+                    <li><strong>Duration-Cost Correlation:</strong> Strongest relationship for pricing</li>
+                    <li><strong>Feature Selection:</strong> Identifies most important variables</li>
+                    <li><strong>Model Building:</strong> Guides feature selection for ML models</li>
+                    <li><strong>Business Logic:</strong> Validates pricing strategy assumptions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
