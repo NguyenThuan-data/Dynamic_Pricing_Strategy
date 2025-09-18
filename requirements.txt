@@ -1,0 +1,21 @@
+# Data Science Case Study - Dynamic Pricing
+# Core data analysis packages
+pandas
+numpy
+
+# Visualization packages
+plotly
+plotly-express
+plotly.graph_objs
+
+# Jupyter notebook support (for running the notebook in VSCODE)
+jupyter
+nbformat
+ipykernel
+
+# Machine learning packages (for future model building)
+scikit-learn
+
+# Image generation support (for static plots, not used in this project but for building the visualized report)
+# fig.write_image function
+kaleido 
