@@ -2,22 +2,10 @@
 
 ## 🌐 Interactive Visualizations
 
-### Option 1: GitHub Pages (Recommended)
-**[View Interactive Plots →](https://NguyenThuan-data.github.io/Dynamic_Pricing_Strategy/)**
-
-### Option 2: Jupyter Notebook Viewer
-**[View Interactive Notebook →](https://nbviewer.org/github/yourusername/your-repo-name/blob/main/dynamic_pricing.ipynb)**
-
-*Both links provide interactive, zoomable, and hover-enabled visualizations!*
+### **[View Interactive Plots →](https://NguyenThuan-data.github.io/Dynamic_Pricing_Strategy/)**
 
 ## Overview
 This project implements a sophisticated dynamic pricing algorithm for ride-sharing services, analyzing demand and supply patterns to optimize pricing strategies.
-
-## Complete Workflow:
-1. Calculate raw multipliers from demand/supply data
-2. Apply safety thresholds to prevent extremes
-3. Multiply with base price to get final dynamic price
-4. Result: Smart, balanced dynamic pricing! 🎯
 
 ## Data Analysis Visualizations
 
