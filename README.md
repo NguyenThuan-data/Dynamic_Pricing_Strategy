@@ -1,7 +1,7 @@
 # Dynamic Pricing Implementation
 
 ## Excecutive Summary
-Undertanding **Dynamic Pricing** unlocks powerful business value—enabling companies to boost revenue, respond to market shifts, and optimize customer experience. This project demonstrates, through a practical case study, how data-driven pricing strategies can be transformed into an effective **Price Recommendation System**. Learning these techniques provides actionable insights that drive real business impact and create a strong competitive edge.
+Understanding **Dynamic Pricing** unlocks powerful business value—enabling companies to boost revenue, respond to market shifts, and optimize customer experience. This project demonstrates, through a practical case study, how data-driven pricing strategies can be transformed into an effective **Price Recommendation System**. Learning these techniques provides actionable insights that drive real business impact and create a strong competitive edge.
 
 ### What is Dynamic Pricing? Why is it necessary?
 
