@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Pricing Engine</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Dynamic Pricing Engine</h1>
+            <p>Real-time algorithm balancing market supply and demand.</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Left Column: Controls -->
+            <section class="controls glass-panel">
+                <h2>Market Conditions</h2>
+                
+                <div class="input-group">
+                    <label for="historical-cost">Baseline Ride Cost ($): <span id="val-cost">25.00</span></label>
+                    <input type="range" id="historical-cost" min="5" max="100" step="1" value="25">
+                </div>
+
+                <div class="input-group">
+                    <label for="riders-count">Active Riders (Demand): <span id="val-riders">60</span></label>
+                    <input type="range" id="riders-count" min="10" max="150" value="60">
+                </div>
+
+                <div class="input-group">
+                    <label for="drivers-count">Available Drivers (Supply): <span id="val-drivers">30</span></label>
+                    <input type="range" id="drivers-count" min="5" max="100" value="30">
+                </div>
+
+                <button id="calculate-btn" class="primary-btn">Calculate Dynamic Price</button>
+            </section>
+
+            <!-- Right Column: Results & Visualization -->
+            <section class="results glass-panel">
+                <div class="price-display">
+                    <div class="old-price">
+                        <span class="label">Base Price</span>
+                        <span class="value" id="res-base">$25.00</span>
+                    </div>
+                    <div class="arrow">➔</div>
+                    <div class="new-price">
+                        <span class="label">Dynamic Price</span>
+                        <span class="value highlight" id="res-dynamic">$--.--</span>
+                    </div>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric-card">
+                        <span class="metric-label">Demand Multiplier</span>
+                        <span class="metric-value" id="res-demand">1.0x</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Supply Multiplier</span>
+                        <span class="metric-value" id="res-supply">1.0x</span>
+                    </div>
+                </div>
+                
+                <div class="status-indicator">
+                    Condition: <strong id="res-status">Balanced</strong>
+                </div>
+
+                <!-- Add a container for a visual chart -->
+                <div class="chart-container">
+                    <canvas id="multiplierChart"></canvas>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Algorithm safeguards prevent price drops below 20% floor.</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
