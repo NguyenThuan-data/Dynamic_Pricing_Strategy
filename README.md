@@ -1,78 +1,93 @@
-# 🚀 Dynamic Pricing API Engine
+# Dynamic Pricing Strategy — Portfolio Case Study
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-> **Transforming Ride-Sharing Data Science into a highly available Full-Stack Pricing Service.**
-
-## 🎯 The Business Problem: Market Imbalance
-In ride-sharing platforms, static pricing leads to **lost revenue** and **poor UX**:
-- **High Demand, Low Supply**: Riders can't find cars. The platform loses out on premium willingness-to-pay.
-- **Low Demand, High Supply**: Drivers sit idle, earning nothing.
-
-## 💡 The Solution: Real-Time Dynamic Pricing
-This project implements a **dynamic multiplier system** based on real market data. By analyzing historical rides, this engine instantly calculates pricing multipliers to balance the market—incentivizing drivers during surges and attracting riders during lulls. 
-
-### Interactive Dashboard Preview
-![Dashboard Surge](./static/dashboard_surge.png)
-🎨 **Premium UI**: Real-time interactive sliders with dynamic `Chart.js` visualizations.
+> Ride-sharing dynamic pricing: from Jupyter analysis to an isolated pricing engine and FastAPI product.
 
 ---
 
-## 🏗️ Architecture & Business Logic
+## Why I built this
 
-The mathematical logic is decoupled into a dedicated `pricing_engine.py` to ensure unit testability and clean architecture. It relies on the absolute 25th (Low) and 75th (High) percentiles of our historical dataset as its baselines.
+Static ride prices fail when demand and supply diverge — riders wait, drivers idle, and revenue leaks. I wanted to turn a data-science case study into something that **behaves like a product**: testable math, an API, and a UI a reviewer can click.
 
-### The Pricing Multiplier Rules:
-1. **Demand Factor**: `Current Riders / Baseline Riders`
-2. **Supply Factor**: `Baseline Drivers / Current Drivers`
-3. **Safety Threshold (0.8x)**: Implemented a strict floor to ensure prices **never drop below 80%** of the standard cost, protecting baseline profitability.
-4. **Final Cost**: `Base Cost × max(Demand, 0.8) × max(Supply, 0.8)`
+## The challenge
 
-## 🚀 Run It Locally (Full-Stack)
+- **Modeling:** Baselines from dataset percentiles (25th / 75th) had to become runtime rules, not notebook cells.
+- **Architecture:** Mixing pricing math inside HTTP handlers would be untestable — I needed a clean split.
+- **Demos:** This repo has **two demo surfaces** (see below) — easy to confuse if not documented honestly.
 
-Want to see the API and the Interactive Dashboard in action?
+## What I did
+
+1. Explored historical ride data in `dynamic_pricing.ipynb` (percentiles, surge patterns).
+2. Extracted logic into **`pricing_engine.py`** — demand/supply multipliers + **0.8x price floor**.
+3. Built **FastAPI** (`main.py`) + interactive dashboard (`templates/`, `static/`).
+4. Published **static plot gallery** on GitHub Pages for quick visual review.
+
+## What I learned
+
+- Business rules belong in a **pure Python module** — the API should only orchestrate.
+- A price floor (never below 80% of base) is a product decision, not a ML metric.
+- Recruiters need to know **which demo to open** — static plots vs live API are different experiences.
+
+## How this leveled me up
+
+| | |
+|---|---|
+| **Before** | I stopped at notebook conclusions and charts |
+| **After** | I can ship testable business logic + HTTP API + frontend |
+| **Unlocked next** | FastAPI service design for larger pipelines (e.g. medical ASR internship project) |
+
+## Demo / proof
+
+| Demo | URL / command | What you see |
+|------|---------------|--------------|
+| **Static plots (no install)** | [nguyenthuan-data.github.io/Dynamic_Pricing_Strategy](https://nguyenthuan-data.github.io/Dynamic_Pricing_Strategy/) | Interactive plot iframes from analysis |
+| **Live API + dashboard (local)** | `uvicorn main:app --reload` → [http://127.0.0.1:8000](http://127.0.0.1:8000) | Sliders, Chart.js, surge pricing in real time |
+| **Swagger docs** | [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) | API contract |
+
+![Dashboard surge preview](./static/dashboard_surge.png)
+
+---
+
+## Technical reference
+
+### Business problem
+
+In ride-sharing, static pricing leads to lost revenue and poor UX when demand and supply diverge. This engine calculates **dynamic multipliers** from rider/driver counts vs historical baselines.
+
+### Pricing rules (`pricing_engine.py`)
+
+1. **Demand factor:** `Current Riders / Baseline Riders`
+2. **Supply factor:** `Baseline Drivers / Current Drivers`
+3. **Safety floor (0.8x):** Price never drops below 80% of standard cost
+4. **Final cost:** `Base Cost × max(Demand, 0.8) × max(Supply, 0.8)`
+
+Baselines use 25th and 75th percentiles from `dataset/dynamic_pricing.csv`.
+
+### Run locally
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/NguyenThuan-data/Dynamic_Pricing_Strategy.git
 cd Dynamic_Pricing_Strategy
-
-# 2. Set up a virtual environment
 python -m venv venv
-source venv/Scripts/activate  # On Windows
-
-# 3. Install requirements
+source venv/Scripts/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
-# 4. Run the FastAPI server
 uvicorn main:app --reload
 ```
 
-Then, open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your browser to interact with the visual pricing engine!
+### Repository structure
 
-To view the interactive API Swagger docs, visit **[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)**.
-
-## 👨‍💻 Tech Stack
-- **Backend API**: FastAPI, Uvicorn, Python
-- **Data Engine**: Pandas, Numpy (for initial baseline extraction)
-- **Frontend Dashboard**: HTML5, Vanilla CSS (Glassmorphism), JavaScript (Fetch API, Chart.js)
-
-## 📂 Repository Structure
 ```text
 Dynamic_Pricing_Strategy/
-├── main.py                 # FastAPI Application Server
-├── pricing_engine.py       # Core isolated business logic
-├── requirements.txt
-├── dataset/
-│   └── dynamic_pricing.csv # Historical baseline data
+├── main.py
+├── pricing_engine.py
+├── dataset/dynamic_pricing.csv
 ├── static/
-│   ├── style.css           # Premium Glassmorphism styling
-│   └── script.js           # Chart interaction and API fetching
-└── templates/
-    └── index.html          # Interactive Dashboard Markup
+├── templates/
+└── dynamic_pricing.ipynb
 ```
 
-*Note: The original Jupyter Notebook analysis that sourced these pricing multipliers is still available in the history for reference.*
+### Tech stack
+
+FastAPI · Uvicorn · Pandas · NumPy · HTML/CSS/JS · Chart.js
